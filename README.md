@@ -8,9 +8,8 @@
       npm run dev
       : localhost:8080
 #### 2.引入stylus
-    Css预编译器
-    
-    npm install stylus stylus-loader --save-dev    
+      Css预编译器
+      npm install stylus stylus-loader --save-dev    
 #### 3.搭建路由
       下载路由npm install vue-router --save
       引入路由模块并使用
@@ -41,4 +40,12 @@
                 }
               });
             }
-
+## day02
+     完成功能：首页，搭建分类页面，抽取分类详情的组件,购物车静态页面搭建
+     完成进度：购物车页面的实现，使用雪碧图调整背景的位置
+      面临问题：
+      1.页面整体发生滑动
+      2.分类页头部实现有些吃力
+      如何解决：
+      1.设置用户缩放行为为no,并且把每个轮播与橡皮筋的父级设置为overflow：hidden
+      2.分类与品牌设为左浮动，搜索设为右浮动，分类与品牌之间使用margin-right去调

@@ -331,7 +331,6 @@ import "swiper/dist/css/swiper.min.css"
         slidesPerView:1,//每次展现的个数
         freeMode:true,//橡皮筋效果
       });
-      console.log('11')
     },
     created () {
       this.$nextTick(() => {

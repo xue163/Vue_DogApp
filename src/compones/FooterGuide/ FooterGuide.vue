@@ -6,7 +6,7 @@
       </span>
       <span class="item_text">首页</span>
     </div>
-    <div class="guide_item" @click="goto('/type')":class="{on:$route.path==='/type'}">
+    <div class="guide_item" @click="goto('/type')":class="{on:$route.path.slice(0,5)==='/type'}">
       <span class="item_icon">
         <i class="iconfont icon-fenlei"></i>
       </span>
@@ -35,7 +35,7 @@
     }
   }
 </script>
-<style lang="stylus" rel="stylesheet/stylus">
+<style lang="stylus" rel="stylesheet/stylus" scoped>
   @import "../../common/stylus/mixins.styl"
   .footer_guide
     top-border-1px(#e4e4e4)

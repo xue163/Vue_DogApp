@@ -49,3 +49,23 @@
       如何解决：
       1.设置用户缩放行为为no,并且把每个轮播与橡皮筋的父级设置为overflow：hidden
       2.分类与品牌设为左浮动，搜索设为右浮动，分类与品牌之间使用margin-right去调
+## day03
+      1.登录方式的显示与隐藏，分类页面的数据获取
+      2.mock模拟数据下载安装
+      npm install mockjs --save
+      在main 文件中引入 mockjs
+      引入data数据
+      配置mock url地址，模板数据
+      
+      问题：
+      1.父组件添加子路由，样式失效
+      解决方案：
+      footer样式里面使用class="{on:$route.path==='/sort'}"中$route.path应该是/sort/tab1或/sort/tab2。 全等判断为false,无法绑定on
+       可以通过截串:class="{on:$route.path.slice(0,5) ==='/sort'}" 之后解决；
+      2. 点击导航变颜色
+        重置点击事件的index值
+        为当前点击的事件添加class样式
+        @click="setIndex(index)" :class="{on:index===currentIndex}"
+              setIndex(index){
+                this.currentIndex = index
+              },

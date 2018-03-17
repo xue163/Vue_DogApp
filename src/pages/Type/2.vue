@@ -5,27 +5,27 @@
     </p>
     <ul>
       <li>
-        <img src="../../common/images/index/9876aff7e2c82b7e07fc0d2b5f47c576.jpg" alt="">
+        <img src="../../../common/images/index/9876aff7e2c82b7e07fc0d2b5f47c576.jpg" alt="">
         <span>磨牙洁齿</span>
       </li>
       <li>
-        <img src="../../common/images/index/9876aff7e2c82b7e07fc0d2b5f47c576.jpg" alt="">
+        <img src="../../../common/images/index/9876aff7e2c82b7e07fc0d2b5f47c576.jpg" alt="">
         <span>磨牙洁齿</span>
       </li>
       <li>
-        <img src="../../common/images/index/9876aff7e2c82b7e07fc0d2b5f47c576.jpg" alt="">
+        <img src="../../../common/images/index/9876aff7e2c82b7e07fc0d2b5f47c576.jpg" alt="">
         <span>磨牙洁齿</span>
       </li>
       <li>
-        <img src="../../common/images/index/9876aff7e2c82b7e07fc0d2b5f47c576.jpg" alt="">
+        <img src="../../../common/images/index/9876aff7e2c82b7e07fc0d2b5f47c576.jpg" alt="">
         <span>磨牙洁齿</span>
       </li>
       <li>
-        <img src="../../common/images/index/9876aff7e2c82b7e07fc0d2b5f47c576.jpg" alt="">
+        <img src="../../../common/images/index/9876aff7e2c82b7e07fc0d2b5f47c576.jpg" alt="">
         <span>磨牙洁齿</span>
       </li>
       <li>
-        <img src="../../common/images/index/9876aff7e2c82b7e07fc0d2b5f47c576.jpg" alt="">
+        <img src="../../../common/images/index/9876aff7e2c82b7e07fc0d2b5f47c576.jpg" alt="">
         <span>磨牙洁齿</span>
       </li>
     </ul>
@@ -36,13 +36,15 @@
   }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
-  @import "../../common/stylus/mixins.styl"
-  .Class
+  @import "../../../common/stylus/mixins.styl"
+  .Class_main
+    /*display none*/
     float right
     margin-top 45px
     width 296px
-    height 605px
     background #fff
+    &.on
+      /*display block*/
     .Class_hot
       margin-top 10px
       margin-left 10px

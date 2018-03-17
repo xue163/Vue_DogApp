@@ -1,7 +1,7 @@
 <template>
   <div class="Cart">
     <span class="Cart_header">
-      <span class="Cart_header_left">
+      <span class="Cart_header_left" @click="goto('/type')">
         <i class="iconfont icon-jiantou3"></i>
       </span>
       <span class="Cart_header_text">购物车
@@ -49,9 +49,10 @@
 <script>
 
   export default {
-
-    data() {
-      return {}
+    methods:{
+      goto(path){
+        this.$router.push(path)
+      }
     }
   }
 </script>
@@ -59,7 +60,8 @@
   @import "../../common/stylus/mixins.styl"
   .Cart
     width 100%
-    background #f5f5f5
+    background #F5F5F5
+    height 667px
     .Cart_header
       position fixed
       left 0
@@ -76,13 +78,17 @@
         float left
         display inline-block
         line-height 50px
+        .iconfont
+          color #ccc
       .Cart_header_text
         line-height 50px
-        font-size 15px
+        font-size 18px
       .Cart_header_right
         float right
         line-height 50px
         margin-right 10px
+        .iconfont
+          color #ccc
         .iconfont
           font-size 25px
     .Cart_header_content
@@ -121,7 +127,6 @@
       .Cart_content_cart
         width 150px
         height 150px
-        /*background #7e8c8d*/
         position absolute
         left 107.5px
         top 50px

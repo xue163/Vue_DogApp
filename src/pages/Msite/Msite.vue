@@ -17,65 +17,37 @@
       </div>
       <div class="Msite_header_button" ref="shopBox">
         <ul>
-          <li class="on">首页</li>
-          <li class="">狗狗主粮</li>
-          <li class="">服饰城</li>
-          <li class="">医疗保健</li>
-          <li class="">零食玩具</li>
-          <li class="">日用外出</li>
-          <li class="">美容香波</li>
+          <li v-for="(item,index) in home.menus":key="index" @click="setIndex(index)"
+              :class="{on:index===currentIndex}">{{item.menu_name}}</li>
         </ul>
       </div>
     </div>
     <!--轮播效果-->
     <div class="swiper-container swiper-one">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img src="../../common/images/index/369bb47c593f6944600ffd807bad927d.jpg" alt="">
-          </div>
-          <div class="swiper-slide">
-            <img src="../../common/images/index/8487a490b5541a4154f57000db9c3193.jpg" alt="">
-          </div>
-          <div class="swiper-slide">
-            <img src="../../common/images/index/9001cc1717d37b1fbb8feaf3a0ee9d73.jpg" alt="">
-          </div>
-          <div class="swiper-slide">
-            <img src="../../common/images/index/22878e4e3dfd9fb615efbdd8204f597c.jpg" alt="">
-          </div>
-          <div class="swiper-slide">
-            <img src="../../common/images/index/6814c3e5ea5473b8c7b07bf0cbe0472d.jpg" alt="">
-          </div>
-          <div class="swiper-slide">
-            <img src="../../common/images/index/tongzhi.jpg" alt="">
-          </div>
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" v-for="(img,index) in home.dog_banner" :key="index">
+          <img :src="img"  alt="">
         </div>
-      <div class="swiper-pagination"></div>
+      </div>
+      <div class="swiper-pagination">
+      </div>
     </div>
+    <!--狗狗眨眼睛-->
+    <div class="go_dog"></div>
     <!--315我们在行动-->
     <div class="Msite_Nav">
-      <img src="../../common/images/index/b611670706f71f0ba6937083d201996e.jpg" alt="">
+      <img :src="home.dog_img" alt="">
     </div>
     <!--E宠分类-->
     <div class="Msite_types">
-      <span class="Msite_types_row">
-          <img src="../../common/images/index/881c6f016aa0c22104011926e51b4f47.jpg" alt="">
-          <img src="../../common/images/index/a6cf6fd5d724bb125b40b17fba0cbe12.jpg" alt="">
-          <img src="../../common/images/index/f8ea826966dcee6abccf2a9574b0e36e.jpg" alt="">
-          <img src="../../common/images/index/5dc60db864d3123929f432e7757ceb96.jpg" alt="">
-          <img src="../../common/images/index/36ce3471dd689ed7377d09b9986303c9.jpg" alt="">
-      </span>
-      <span class="Msite_types_row">
-          <img src="../../common/images/index/5a6991defe3616bb1208506f5f0d78da.jpg" alt="">
-          <img src="../../common/images/index/038add951408054bafb01498e8d98635.jpg" alt="">
-          <img src="../../common/images/index/420a7f62887b490aa7c627dc5364178d.jpg" alt="">
-          <img src="../../common/images/index/b799562d3f7f8ca39769dc5fd1794a4a.jpg" alt="">
-          <img src="../../common/images/index/dfa5a7598e3ee203c05f0f03fc182edc.jpg" alt="">
-      </span>
+      <ul>
+        <li v-for="(list,index) in home.menu_list"><img :src="list" alt=""></li>
+      </ul>
     </div>
     <!--一折秒杀-->
     <div class="Msite_discount">
       <div class="Msite_dis_Seckill">
-        <img src="../../common/images/index/85e2ada29e2157daeda797903cd13dd2.jpg" alt="">
+        <img :src="home.miaosha" alt="">
       </div>
       <div class="Msite_dis_content">
         <span class="Msite_dis_content_day">
@@ -183,31 +155,22 @@
     <!--品牌力量-->
     <div class="Msite_discount">
       <div class="Msite_dis_Seckill">
-        <img src="../../common/images/index/f1b7fefaf2e0a3b01498658788d75fbd.jpg" alt="">
+        <img :src="home.brand_power" alt="">
       </div>
       <div class="Msite_dis_content">
-        <img src="../../common/images/index/081c4aec9c8c81fa8dcb5bb9a63ddac5.gif" alt="">
+        <img :src="home.gif" alt="">
       </div>
     </div>
     <!--一折团-->
     <div class="Msite_group">
       <div class="Msite_group_Seckill">
-        <img src="../../common/images/index/5fd369ed534f5a32ac751ff29ab90034.jpg" alt="">
+        <img :src="home.dapaituan"alt="">
       </div>
       <div class="Msite_group_content">
         <div class="swiper-three">
           <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <img src="../../common/images/index/3c54559f077235436b408a6839138b4f.jpg" alt="">
-            </div>
-            <div class="swiper-slide">
-              <img src="../../common/images/index/3ea8f16882581307427bd3d962fc6dd0.jpg" alt="">
-            </div>
-            <div class="swiper-slide">
-              <img src="../../common/images/index/9e4502cf22ecb6f8b97715c7fc73ed50.jpg" alt="">
-            </div>
-            <div class="swiper-slide">
-              <img src="../../common/images/index/f122ae20ce1880988ff7e5c64440675a.jpg" alt="">
+            <div class="swiper-slide" v-for="(tuanList,index) in home.dapaituan_list">
+              <img :src="tuanList" alt="">
             </div>
           </div>
         </div>
@@ -216,85 +179,49 @@
     <!--VIP尊享服务-->
     <div class="Msite_brand">
       <div class="Msite_brand_Seckill">
-        <img src="../../common/images/index/02cdfda794ee4cc90e0e39462e17d49d.jpg" alt="">
+        <img :src="home.vip" alt="">
       </div>
-      <div class="Msite_brand_list">
-        <img src="../../common/images/index/fd6e6a5c56820b18eb2e0f6e359d9f59.jpg" alt="">
-        <img src="../../common/images/index/fd6e6a5c56820b18eb2e0f6e359d9f59.jpg" alt="">
-        <img src="../../common/images/index/fd6e6a5c56820b18eb2e0f6e359d9f59.jpg" alt="">
-        <img src="../../common/images/index/fd6e6a5c56820b18eb2e0f6e359d9f59.jpg" alt="">
-      </div>
-      <div class="Msite_brand_list">
-        <img src="../../common/images/index/fd6e6a5c56820b18eb2e0f6e359d9f59.jpg" alt="">
-        <img src="../../common/images/index/fd6e6a5c56820b18eb2e0f6e359d9f59.jpg" alt="">
-        <img src="../../common/images/index/fd6e6a5c56820b18eb2e0f6e359d9f59.jpg" alt="">
-        <img src="../../common/images/index/fd6e6a5c56820b18eb2e0f6e359d9f59.jpg" alt="">
-      </div>
-
+      <ul>
+        <li v-for="(itemVip,index) in home.vip_services" :key="index"><img :src="itemVip" alt="">
+        </li>
+      </ul>
     </div>
     <!--大牌好货-->
     <div class="Msite_Major">
       <div class="Msite_Major_good">
-        <img src="../../common/images/index/0d6125d9f846519e83e7354bd8638cf7.jpg" alt="">
+        <img :src="home.haohuo" alt="">
       </div>
-      <ul class="Msite_Major_one">
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-      </ul>
-      <ul class="Msite_Major_two">
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-      </ul>
-      <ul class="Msite_Major_two">
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-      </ul>
-      <ul class="Msite_Major_two">
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
-        <li><img src="../../common/images/index/0a62002ed3ef0055064da37248c99069.jpg" alt=""></li>
+      <ul>
+        <li v-for="(huo,index) in home.haohuo_list" :key="index">
+          <div class="Msite_left">
+            <ul>
+              <li v-for="(huoLeft,index) in huo.left" :key="index">
+                <img :src="huoLeft" alt=""></li>
+            </ul>
+          </div>
+          <div class="Msite_right">
+            <ul>
+              <li v-for="(huoRight,index) in huo.right" :key="index">
+                <img :src="huoRight" alt=""></li>
+            </ul>
+          </div>
+        </li>
       </ul>
     </div>
     <!--特别星球-->
     <div class="Msite_Especially">
       <div class="Msite_Especially_star">
-        <img src="../../common/images/index/img3.jpg" alt="">
+        <img :src="home.special" alt="">
       </div>
       <div class="Msite_Especially_sale">
-        <div class="Msite_Especially_sale_left">
-          <img src="../../common/images/index/img4.jpg" alt="">
+        <div class="Msite_Especially_sale_left" >
+          <img :src="home.special_left" alt="" >
         </div>
-        <div class="Msite_Especially_sale_right">
-          <div class="Msite_Especially_sale_right_one">
-            <img src="../../common/images/index/img5.jpg" alt="">
-          </div>
-          <div class="Msite_Especially_sale_right_two">
-            <img src="../../common/images/index/img6.jpg" alt="">
-          </div>
-        </div>
+        <ul class="Msite_Especially_sale_right">
+          <li class="Msite_Especially_sale_right_one" v-for="(specialItem,index) in home.special_list" :key="index">
+            <img :src="specialItem" alt="">
+          </li>
+        </ul>
       </div>
     </div>
     <!--底部-->
@@ -313,28 +240,42 @@
 import BScroll from 'better-scroll'
 import Swiper from "swiper"
 import "swiper/dist/css/swiper.min.css"
+import {mapState} from "vuex"
   export default {
-    mounted(){
-      var swiper = new Swiper('.swiper-one', {
-        autoplay:true,
-        loop: true,
-        pagination: {
-          el: '.swiper-pagination',
-        }
-      });
-      var nav = new Swiper('.swiper-two',{
-        slidesPerView:4,//每次展现的个数
-        freeMode:true,//橡皮筋效果
-        spaceBetween:10//左右间距
-      });
-      var group = new Swiper('.swiper-three', {
-        slidesPerView:1,//每次展现的个数
-        freeMode:true,//橡皮筋效果
-      });
-    },
+  data(){
+    return{
+      currentIndex:0,
+    }
+  },
     created () {
       this.$nextTick(() => {
         this._initScroll();
+      });
+    },
+    mounted(){
+      this.$store.dispatch("getHome",()=>{
+        this.$nextTick(()=>{
+          var swiper = new Swiper('.swiper-one', {
+            autoplay:{
+              delay: 2500,
+              disableOnInteraction: false,
+            },
+            loop: true,
+            pagination: {
+              el: '.swiper-pagination',
+            }
+          });
+          var nav = new Swiper('.swiper-two',{
+            slidesPerView:4,//每次展现的个数
+            freeMode:true,//橡皮筋效果
+            spaceBetween:10//左右间距
+          });
+          var group = new Swiper('.swiper-three', {
+            slidesPerView:1,//每次展现的个数
+            freeMode:true,//橡皮筋效果
+          });
+
+        })
       });
     },
     methods:{
@@ -344,8 +285,14 @@ import "swiper/dist/css/swiper.min.css"
           click: true,
           scrollX: true,
         });
+      },
+      setIndex(inedx){
+        this.currentIndex =inedx
       }
-    }
+    },
+    computed:{
+      ...mapState(['home']),
+    },
   }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
@@ -384,6 +331,7 @@ import "swiper/dist/css/swiper.min.css"
             color #666
             font-size 13px
             padding-left 10px
+            outline none
           .iconfont
             margin-left -25px
             font-size 12px
@@ -414,12 +362,40 @@ import "swiper/dist/css/swiper.min.css"
       overflow hidden
       width 100%
       margin-top 86px
-      .swiper-slide
-        width 100%
-        height 160px
-        img
+      .swiper-pagination-bullet
+        background: #fff
+        opacity: .9
+        width: 6px
+        height: 6px
+        border-radius 100%
+      .swiper-pagination-bullet-active //当前选中的圆点导航
+        width 16px
+        height 6px
+        border-radius 6px
+      .swiper-wrapper
+        .swiper-slide
           width 100%
           height 160px
+          img
+            width 100%
+            height 160px
+    .go_dog
+      background: url(../../common/images/index/godog.png) no-repeat;
+      width: 41px;
+      height: 46px;
+      background-size: 80px auto;
+      position: fixed;
+      bottom: 15%;
+      right: 0;
+      z-index: 2;
+      animation: go_dog 1s steps(1,end) infinite
+      @keyframes go_dog
+        0%
+          background-position 0 0
+        50%
+          background-position: -41px 0
+        100%
+          background-position: 0 0
     .Msite_Nav
       width 100%
       height 270px
@@ -429,22 +405,17 @@ import "swiper/dist/css/swiper.min.css"
     .Msite_types
       width 100%
       height 190px
-      .Msite_types_row:nth-child(1)
+      >ul
         width 100%
-        height 95px
+        height 190px
         display flex
-        img
+        flex-wrap wrap
+        >li
           width 20%
           height 95px
-          flex 1
-      .Msite_types_row:nth-child(2)
-        width 100%
-        height 95px
-        display flex
-        img
-          width 20%
-          height 95px
-          flex 1
+          img
+            width 100%
+            height 95px
     .Msite_discount
       width 100%
       height 268px
@@ -525,14 +496,17 @@ import "swiper/dist/css/swiper.min.css"
         img
           width 100%
           height 100%
-      .Msite_brand_list
+      >ul
         width 100%
-        height 100px
+        height 200px
         display flex
-        img
+        flex-wrap wrap
+        >li
           width 50%
           height 100px
-          flex 1
+          >img
+            width 100%
+            height 100px
     .Msite_Major
       width 100%
       overflow hidden
@@ -543,31 +517,41 @@ import "swiper/dist/css/swiper.min.css"
         img
           width 100%
           height 100%
-      .Msite_Major_one
+      >ul
         width 100%
-        height 908px
-        li
-          float left
-          width 185.5px
-          height 225px
-          border 1px solid #ccc
-          img
-            width 100%
+        height 4535px
+        >li
+          width 100%
+          height 907px
+          .Msite_left
+            width 50%
             height 100%
-      .Msite_Major_two
-        width 100%
-        height 908px
-        margin-top 10px
-        li
-          float left
-          width 185.5px
-          height 225px
-          border 1px solid #ccc
-          img
-            width 100%
+            float left
+            >ul
+              width 100%
+              height 100%
+              >li
+                width 100%
+                height 25%
+                >img
+                  width 100%
+                  height 99%
+                  border-top  1px solid #ebebeb
+          .Msite_right
+            width 50%
             height 100%
-
-  .Msite_Especially
+            float right
+            >ul
+              width 100%
+              height 100%
+              >li
+                width 100%
+                height 25%
+                >img
+                  width 100%
+                  height 99%
+                  border-top  1px solid #ebebeb
+    .Msite_Especially
       width 100%
       height 424px
       .Msite_Especially_star
@@ -583,7 +567,6 @@ import "swiper/dist/css/swiper.min.css"
           float left
           width 188px
           height 339.5px
-          background-color rebeccapurple
           img
             width 100%
             height 100%
@@ -592,36 +575,31 @@ import "swiper/dist/css/swiper.min.css"
           width 187px
           height 339.5px
           .Msite_Especially_sale_right_one
-            width width 187px
-            height 168.5px
+            width  187px
+            height 169.5px
             img
               width 100%
               height 100%
-          .Msite_Especially_sale_right_two
-            width width 187px
-            height 171px
-            img
-              width 100%
-              height 100%
-  .Msite_footer
-    width 100%
-    height 86px
-    ul
-      margin 10px auto
-      width 80%
-      height 42px
-      li
+    .Msite_footer
+      width 100%
+      height 86px
+      margin-bottom 55px
+      ul
+        margin 10px auto
+        width 80%
+        height 42px
+        li
+          text-align center
+          float left
+          width 70px
+          line-height 42px
+          font-size 14px
+          color #333
+          &.on
+            color red
+      .Msite_footer_text
         text-align center
-        float left
-        width 70px
-        line-height 42px
-        font-size 14px
-        color #333
-        &.on
-          color red
-    .Msite_footer_text
-      text-align center
-      height 40px
-      font-size 12px
-      margin-top -10px
+        height 40px
+        font-size 12px
+        margin-top -10px
 </style>

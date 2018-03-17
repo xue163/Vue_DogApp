@@ -1,8 +1,8 @@
 import ajax from './ajax'
 /*
- * 轮播图
+ * 导航
  */
-export const reqMsite = () => ajax('/msite')
+export const reqHome = () => ajax('/msite')
 /*
  * 分类
  */

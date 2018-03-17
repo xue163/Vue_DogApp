@@ -69,3 +69,43 @@
               setIndex(index){
                 this.currentIndex = index
               },
+## day04
+    
+      首页，分类页面获取数据完成,
+      进度：实现图片懒加载
+      问题：
+      1点击回退失效
+      2橡皮筋效果不能实现的问题
+      3.首页加载完成后立即刷新时会出现轮播区域失效
+      4.首页第一个轮播图 导航小圆点样式的修改
+      解决方案
+      1.底部的路由将replace替换为push,push可以添加到缓存中，可以通过
+      this.$router.go(-1): 请求(返回)上一个记录路由
+      this.$router.go(1): 请求下一个记录路由
+      2.父级的高度固定，子级的高度要大于父级才会出现橡皮筋效果，使用better-Scorll,获取的是第一个子元素，分类列表右测要被包裹三层，最外层使用better-scorll,第二次用于获取第一个子元素，第三次用于获取数据。三层数据嵌套在父级使用v-if,不能放在第一层和第二层父级页面的初始没有数据，不会进入子级，所以会导致子级没有高度，导致获取不到子元素
+      
+      3.在获取数据之后，加一个回调函数，将sweper放到$nextTick函数中，当页面数据完成加载更新后立刻执行，
+      并且在action异步请求函数中添加回调并调用
+      4.首页第一个轮播图 导航小圆点样式的修改
+        可以在Swiper自动生成的类上修改CSS样式
+               .swiper-pagination-bullet 
+                  background: #fff
+                  opacity: .9
+                  width: 6px
+                  height: 6px
+                  border-radius 100%
+                .swiper-pagination-bullet-active //当前选中的圆点导航
+                  width 16px
+                  height 6px
+                  border-radius 6px
+        这个是轮播的一个配置，自动轮播时，你点了以后就不自动播放了，这个时解决这个问题的配置autoplay: {
+                      delay: 2500,
+                      disableOnInteraction: false,
+                    },             
+     
+               
+                
+                
+             
+                
+                

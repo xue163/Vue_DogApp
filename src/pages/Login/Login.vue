@@ -2,8 +2,8 @@
   <div class="Login">
     <div class="Login_header">
       <div class="Login_header_top">
-        <span class="Login_header_top_left" @click="goto('/msite')">
-          <i class="iconfont icon-jiantou3" ></i>
+        <span class="Login_header_top_left" >
+          <i class="iconfont icon-jiantou3" @click="$router.back()"></i>
         </span>
         <span class="Login_header_top_right">
           注册
@@ -72,9 +72,6 @@
       }
     },
     methods:{
-      goto(path){
-        this.$router.replace(path)
-      },
       setLoginWay(loginWay){
         this.loginWay = loginWay
       }
@@ -134,81 +131,81 @@
           display none
           &.on
             display block
-      .Login_content_input
-        width 90%
-        height 92px
-        margin 0 auto
-        ul
-          width 100%
+        .Login_content_input
+          width 90%
           height 92px
-          li
-            line-height 46px
+          margin 0 auto
+          ul
             width 100%
-            height 46px
-            border-bottom 1px solid #ccc
-            font-size 14px
-            span
-              margin-left 5px
-              .iconfont
-                font-size 20px
-                color #7e8c8d
-            input[type='text']
-              color #dedede
-              outline none
-              background none
-            input[type='password']
-              color #dedede
-              outline none
-              background none
-            input::-webkit-input-placeholder
-             type::-webkit-input-placeholder
-               color: #dedede
-  .Login_content_psw
-        width 90%
-        height 138px
-        margin 0 auto
-        position relative
-        ul
-          width 100%
+            height 92px
+            li
+              line-height 46px
+              width 100%
+              height 46px
+              border-bottom 1px solid #ccc
+              font-size 14px
+              span
+                margin-left 5px
+                .iconfont
+                  font-size 20px
+                  color #dedede
+              input[type='text']
+                color #dedede
+                outline none
+                background none
+              input[type='password']
+                color #dedede
+                outline none
+                background none
+              input[type='text']::-webkit-input-placeholder
+                color: #dedede;
+              input[type='password']::-webkit-input-placeholder
+                color #dedede
+    .Login_content_psw
+          width 90%
           height 138px
-          li
-            line-height 46px
+          margin 0 auto
+          position relative
+          ul
             width 100%
-            height 46px
-            border-bottom 1px solid #ccc
-            font-size 14px
-            span
-              margin-left 5px
-              img
+            height 138px
+            li
+              line-height 46px
+              width 100%
+              height 46px
+              border-bottom 1px solid #ccc
+              font-size 14px
+              span
+                margin-left 5px
+                img
+                  position absolute
+                  right 0
+                .iconfont
+                  font-size 20px
+                  color #dedede
+              input[type='text']
+                color #dedede
+                outline none
+                background none
+              input[type='password']
+                color #ccc
+                outline none
+                background none
+              input[type='text']::-webkit-input-placeholder
+                color: #dedede;
+              a
+                font-size 12px
+                text-align center
+                display block
+                width 100px
+                height 25px
+                line-height 30px
+                border 1px solid red
+                border-radius 3px
+                color red
                 position absolute
                 right 0
-              .iconfont
-                font-size 20px
-                color #7e8c8d
-            input[type='text']
-              color #dedede
-              outline none
-              background none
-            input[type='password']
-              color #ccc
-              outline none
-              background none
-            input::-webkit-input-placeholder
-             type::-webkit-input-placeholder
-               color: #dedede
-            a
-              font-size 12px
-              text-align center
-              display block
-              width 100px
-              height 25px
-              line-height 30px
-              border 1px solid red
-              border-radius 3px
-              color red
-              position absolute
-              right 0
-              top 105px
+                top 105px
       .Login_cont
         width 100%
         text-align center

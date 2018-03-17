@@ -1,43 +1,43 @@
 <template>
   <div class="Cart">
     <span class="Cart_header">
-      <span class="Cart_header_left" @click="goto('/type')">
+      <span class="Cart_header_left" @click="$router.back()">
         <i class="iconfont icon-jiantou3"></i>
       </span>
       <span class="Cart_header_text">购物车
       </span>
-      <span class="Cart_header_right">
+      <span class="Cart_header_right" @click="getCar(isShow)" :class="{on:isShow}">
         <i class="iconfont icon-erweima"></i>
       </span>
     </span>
-    <div class="Cart_header_content">
-      <div class="Cart_header_top">
-        <div class="Cart_content_item">
-          <span class="item_icon">
-            <i class="iconfont icon-fangwuxinxi"></i>
-          </span>
-          <span class="item_text">首页</span>
+      <transition name="slide">
+        <div class="Cart_header_content" @click="getCar(isShow)">
+          <div class="Cart_content_item">
+            <span class="item_icon">
+              <i class="iconfont icon-fangwuxinxi"></i>
+            </span>
+            <span>首页</span>
+          </div>
+          <div class="Cart_content_item">
+            <span class="item_icon">
+              <i class="iconfont icon-fenlei"></i>
+            </span>
+            <span>商品分类</span>
+          </div>
+          <div class="Cart_content_item">
+            <span class="item_icon">
+              <i class="iconfont icon-gouwuche"></i>
+            </span>
+            <span>购物车</span>
+          </div>
+          <div class="Cart_content_item">
+            <span class="item_icon">
+              <i class="iconfont icon-xiaolian"></i>
+            </span>
+            <span>我的E宠</span>
+          </div>
         </div>
-        <div class="Cart_content_item">
-          <span class="item_icon">
-            <i class="iconfont icon-fenlei"></i>
-          </span>
-          <span class="item_text">购物车</span>
-        </div>
-        <div class="Cart_content_item">
-          <span class="item_icon">
-            <i class="iconfont icon-gouwuche"></i>
-          </span>
-          <span class="item_text">我的E宠</span>
-        </div>
-        <div class="Cart_content_item">
-          <span class="item_icon">
-            <i class="iconfont icon-xiaolian"></i>
-          </span>
-          <span class="item_text">我的E宠</span>
-        </div>
-      </div>
-    </div>
+      </transition>
     <div class="Cart_content">
       <div class="Cart_content_cart"></div>
       <div class="Cart_content_text">购物车是空的</div>
@@ -49,9 +49,14 @@
 <script>
 
   export default {
+    data(){
+      return{
+        isShow:false
+      }
+    },
     methods:{
-      goto(path){
-        this.$router.push(path)
+      getCar(isShow){
+        this.isShow = !isShow
       }
     }
   }
@@ -94,49 +99,50 @@
     .Cart_header_content
       display none
       width 100%
-      height 55px
-      margin-top 50px
-      .Cart_header_top
-        width 100%
-        height 55px
-        background #fff
-        display flex
+      height 0
+      overflow hidden
+      border-bottom 1px solid #b2c6c7
+      background #fff
+      &.slide-enter-active
+        transition all 1s ease-out
+      &.slide-leave-active
+        transition all 1.5s ease-out
+      &.slide-enter,&.slide-leave-to
+        height 70px
         .Cart_content_item
-          margin-top 5px
+          display flex
           flex 1
-          width 25%
-          height 100%
           text-align center
-          color #999
+          flex-direction column
+          align-items center
+          margin 10px
+          color #999999
           &.on
-            color: #2fa761
-          & span
-            font-size 12px
-          .item_icon
-            display block
+            color #02a774
+          span
+            font-size 14px
+            margin-top 2px
             .iconfont
-              font-size 30px
-          .item_text
-            display block
+              font-size 33px
     .Cart_content
-      margin-top 50px
       width 100%
-      height 300px
+      height 350px
       background #fff
       position relative
       .Cart_content_cart
-        width 150px
-        height 150px
+        width 120px
+        height 110px
         position absolute
-        left 107.5px
-        top 50px
+        left 35%
+        top 100px
         background-image url("../../common/images/shopcart/cart-ico.png")
         background-repeat no-repeat
-        background-position 16px -199px
+        background-position 14px -151px
+        background-size 100px
       .Cart_content_text
         position absolute
         left 38%
-        top 190px
+        top 220px
         color #ccc
         font-size 18px
       .Cart_content_text_span1
@@ -144,11 +150,11 @@
         position absolute
         display block
         border 1px solid #ccc
-        width 100px
-        height 40px
-        line-height 40px
+        width 90px
+        height 35px
+        line-height 35px
         left 24%
-        top 220px
+        top 250px
         color #ccc
         font-size 18px
         border-radius 5px
@@ -157,11 +163,11 @@
         position absolute
         display block
         border 1px solid #ccc
-        width 100px
-        height 40px
-        line-height 40px
+        width 90px
+        height 35px
+        line-height 35px
         left 53%
-        top 220px
+        top 250px
         color #ccc
         font-size 18px
         border-radius 5px

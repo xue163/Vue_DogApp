@@ -8,8 +8,9 @@
           @click="setIndex(index)" :class="{on:index===currentIndex}">{{category.name}}</li>
         </ul>
       </div>
-      <div class="Class_right" ref="List_right">
-        <div class="Class_main"  v-if="categorys[currentIndex]">
+      <div class="Class_right" ref="right">
+        <div class="Class_main">
+          <div v-if="categorys[currentIndex]">
             <!--分类-->
             <div class="Class_main_top" v-if="item.type===0" v-for="(item,index) in categorys[currentIndex].cate_list" :key="index" >
               <p class="Class_hot">
@@ -34,6 +35,7 @@
                 </li>
               </ul>
             </div>
+          </div>
         </div>
       </div>
     </div>
@@ -45,15 +47,16 @@
   export default {
     data(){
       return{
-        currentIndex:Number,
+        currentIndex:0,
         cate_list:Object
       }
     },
     computed:{
       ...mapState(['categorys']),
     },
-    created () {
+    mounted () {
       this.$nextTick(() => {
+
         this._initScroll();
       });
     },
@@ -66,11 +69,11 @@
           scrollY: true,
           click: true
         });
-        console.log("1111")
-        this.ListrightScroll = new BScroll('.Class_main', {
+        this.BoxScroll = new BScroll(this.$refs.right, {
           scrollY: true,
           click: true
         });
+
       }
     },
   }
@@ -114,54 +117,55 @@
         height 570px
         .Class_main
           width 100%
-          .Class_main_top
-            width 295px
-            .Class_hot
-              margin-top 10px
-              margin-left 10px
-              color #7e8c8d
-              font-size 14px
-              width 290px
-              height 30px
-              line-height 30px
-            >ul
+          >div
+            .Class_main_top
               width 295px
-              display flex
-              flex-wrap wrap
-              margin 0 auto
-              font-size 13px
-              color #333
-              >li
-                width 96px
-                height 117px
+              .Class_hot
+                margin-top 10px
+                margin-left 10px
+                color #7e8c8d
+                font-size 14px
+                width 290px
+                height 30px
+                line-height 30px
+              >ul
+                width 295px
+                display flex
+                flex-wrap wrap
+                margin 0 auto
+                font-size 13px
+                color #333
+                >li
+                  width 96px
+                  height 117px
+                  text-align center
+                  margin-bottom 50px
+                  >img
+                    width 86px
+                    height 100px
+            .Class_main_bottom
+              width 295px
+              .Class_brand
+                margin-top 10px
+                margin-left 10px
+                color #7e8c8d
+                font-size 14px
+                width 290px
+                height 30px
+                line-height 30px
+              >ul
+                width 295px
+                display flex
+                flex-wrap wrap
                 text-align center
-                margin-bottom 50px
-                >img
-                  width 86px
-                  height 100px
-          .Class_main_bottom
-            width 295px
-            .Class_brand
-              margin-top 10px
-              margin-left 10px
-              color #7e8c8d
-              font-size 14px
-              width 290px
-              height 30px
-              line-height 30px
-            >ul
-              width 295px
-              display flex
-              flex-wrap wrap
-              text-align center
-              font-size 13px
-              color #333
-              >li
-                width 50%
-                height 80px
-                >img
-                  width 135px
-                  height 55px
-                  border 1px solid #7e8c8d
+                font-size 13px
+                color #333
+                >li
+                  width 50%
+                  height 80px
+                  >img
+                    width 135px
+                    height 55px
+                    border 1px solid #7e8c8d
 
 </style>

@@ -30,7 +30,7 @@
   export default {
     methods:{
       goto(path){
-        this.$router.replace(path)
+        this.$router.push(path)
       }
     }
   }

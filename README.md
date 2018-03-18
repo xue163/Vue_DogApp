@@ -34,12 +34,32 @@
 
             mounted(){
               var swiper = new Swiper('.swiper-container', {
-                loop: true,
+                loop: true,//每次展现一张
+                
                 pagination: {
-                  el: '.swiper-pagination',
+                  el: '.swiper-pagination',//配置小圆点
                 }
               });
             }
+        首页第一个轮播图 导航小圆点样式的修改
+                       .swiper-pagination-bullet 
+                          background: #fff
+                          opacity: .9
+                          width: 6px
+                          height: 6px
+                          border-radius 100%
+                        .swiper-pagination-bullet-active //当前选中的圆点导航
+                          width 16px
+                          height 6px
+                          border-radius 6px
+                这个是轮播的一个配置，自动轮播时，你点了以后就不自动播放了，这个时解决这个问题的配置autoplay: {
+                              delay: 2500,
+                              disableOnInteraction: false,
+                            },   
+                            
+           slidesPerView:4,//每次展现的个数
+           freeMode:true,//橡皮筋效果
+           spaceBetween:10//左右间距                   
 ## day02
 #### 完成功能：首页，搭建分类页面，抽取分类详情的组件,购物车静态页面搭建
 #### 完成进度：购物车页面的实现，使用雪碧图调整背景的位置
@@ -75,6 +95,17 @@
       首页，分类页面获取数据完成,
 #### 完成进度      
       实现图片懒加载
+      npm install --save vue-lazyload  //懒加载
+      图片懒加载：
+      在main.js中引入
+      import Vuelazyload from 'vue-lazyload'
+      import loading from './common/images/index/default-epet.png'
+      并配置引入的图片
+      Vue.use(Vuelazyload, {
+        loading
+        // <img v-lazy="food.image">
+      })
+
 #### 问题及解决方案
       1点击回退失效
       底部的路由将replace替换为push,push可以添加到缓存中，可以通过
@@ -86,23 +117,32 @@
       3.首页加载完成后立即刷新时会出现轮播区域失效
       在获取数据之后，加一个回调函数，将sweper放到$nextTick函数中，当页面数据完成加载更新后立刻执行，
       并且在action异步请求函数中添加回调并调用
-      4.首页第一个轮播图 导航小圆点样式的修改
-                     .swiper-pagination-bullet 
-                        background: #fff
-                        opacity: .9
-                        width: 6px
-                        height: 6px
-                        border-radius 100%
-                      .swiper-pagination-bullet-active //当前选中的圆点导航
-                        width 16px
-                        height 6px
-                        border-radius 6px
-              这个是轮播的一个配置，自动轮播时，你点了以后就不自动播放了，这个时解决这个问题的配置autoplay: {
-                            delay: 2500,
-                            disableOnInteraction: false,
-                          },   
-      5.分类页中，使用v-for遍历嵌套的层级达到三层时报错，不影响效果
+
+      4.分类页中，使用v-for遍历嵌套的层级达到三层时报错，不影响效果
        解决办法，在遍历的父元素中加上v-if判定，不报错
+## day05
+ #### 完成功能    
+       实现全部品牌的静态与交互，点击切换展现品牌列表的效果
+ #### 完成进度      
+       全部品牌实现完成
+       登录页面的验证
+ 
+ #### 问题及解决方案            
+       实现全部品牌思路不清晰
+       实现思路
+       一.左侧的滑动
+       1.为左侧的分类品牌绑定橡皮筋效果，设置父级高度小于子级高度
+       2.监视左侧的滑动过程和滑动的结束，并保存他们的值（滑动中的值与结束位置的值）
+       二.左侧的高度计算
+       1.初始化tops[]为一个空数组，top初始化高度为0
+       2.通过父级Ul获取所有子级li，这时为一个伪数组，将它转化为真数组，并且遍历得到每个li
+       计算每个li的高度，添加到tops[]数组中
+       三.得到当前的index值
+       1.通过tops.findIndex((top, index) => scrollY>=top && scrollY<tops[index+1])
+       返回一个index值，Scrolly的高度要大于当前top的高度并且小于下一个top的高度
+       2.为右侧的分类绑定一个点击事件，通过index值来控制左侧滑动的位置，滑动的距离=tops[index]
+       =scrollY
+       
                
                 
                 

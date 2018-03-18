@@ -6,6 +6,7 @@ import Cart from "../pages/Cart/Cart.vue"
 import Login from "../pages/Login/Login.vue"
 import Class from "../pages/Type/Class/Class.vue"
 import Brand from "../pages/Type/Brand/Brand.vue"
+import Whole from "../pages/Whole/Whole.vue"
 
 Vue.use(VueRouter)
 
@@ -37,7 +38,7 @@ export default new VueRouter({
           component: Brand,
           meta: {
             showFooter: true // 需要显示底部组件
-          },
+          }
         },
         {
           path: '',
@@ -52,6 +53,10 @@ export default new VueRouter({
     {
       path:'/login',
       component:Login
+    },
+    {
+      path:'/whole',
+      component:Whole
     },
     {
       path: '/',

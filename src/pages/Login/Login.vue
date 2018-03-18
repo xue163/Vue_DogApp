@@ -19,17 +19,18 @@
       </div>
     </div>
     <div class="Login_content">
-      <form action="">
-        <!--用户名注册-->
+      <form>
+        <!--普通登录-->
         <div class="Login_content_input"  :class="{on:loginWay}">
           <ul>
             <li>
               <span><i class="iconfont icon-touxiang"></i></span>
-              <input type="text" placeholder="手机号/邮箱/用户名" class="text" name="username" id="username">
+              <input type="text" placeholder="手机号/邮箱/用户名" class="text" v-model="name">
             </li>
             <li>
               <span><i class="iconfont icon-suo"></i></span>
-              <input type="password" placeholder="输入密码" class="text" name="password" id="password">            </li>
+              <input type="password" placeholder="输入密码" class="text" v-model="pwd">
+            </li>
           </ul>
         </div>
         <!--密码登录注册-->
@@ -37,16 +38,16 @@
           <ul >
             <li>
               <span><i class="iconfont icon-shouji"></i></span>
-              <input type="text" placeholder="已注册的手机号">
+              <input type="text" maxlength="11" placeholder="已注册的手机号" v-model="phone" :class="{right_phone:rightPhone}" >
             </li>
             <li>
               <span><i class="iconfont icon-suo"></i></span>
-              <input type="text" placeholder="请输入图片内容">
+              <input type="text" placeholder="请输入图片内容" v-model="picture">
               <span><img src="../../common/images/login/seccode.jpg"></span>
             </li>
             <li>
               <span><i class="iconfont icon-suo"></i></span>
-              <input type="text" class="dttext" placeholder="动态密码" name="code" id="code" style="padding-right:8.5em;">
+              <input type="text" class="dttext" placeholder="动态密码" v-model="code">
               <a href="javascript:void(0);"class="get_phonepass afff ft12 " id="scodebtn">获取动态密码</a>
             </li>
           </ul>
@@ -54,7 +55,7 @@
       </form>
       <div class="Login_cont">
         <p class="Login_cont_pwd">忘记密码?</p>
-        <input type="submit" value="登 录"/>
+        <input @click="submitBtn" type="submit" value="登 录"/>
         <p class="Login_cont_login">合作网站登录</p>
         <ul>
           <li><img src="../../common/images/login/login_ico2.png" alt=""></li>
@@ -65,17 +66,39 @@
   </div>
 </template>
 <script>
+  import { MessageBox, Toast} from 'mint-ui';
   export default {
     data(){
       return{
         loginWay: true, // true代表用户登陆, false密码登陆
+        //普通登录
+        name:'',//用户名
+        pwd:'',//密码
+
+        //手机动态密码登录
+        phone:'',//手机号
+        code:'',//验证码
+        picture:''//图片
+
+      }
+    },
+    computed:{
+      rightPhone(){
+        // 以1开头的11数字
+        return /^1\d{10}$/.test(this.phone)
       }
     },
     methods:{
       setLoginWay(loginWay){
         this.loginWay = loginWay
+      },
+      submitBtn(){
+        let result;
+        if(this.loginWay){//判断登录方式是普通
+            const {name,pwd} = this
+        }
       }
-    }
+    },
   }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">

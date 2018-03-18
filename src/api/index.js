@@ -11,5 +11,7 @@ export const reqfenlei = () => ajax('/class')
  *推荐品牌
  */
 export const reqbrand = () => ajax('/brand')
-
-
+/*
+*全部品牌
+ */
+export const reqwhole = () =>ajax('/whole')

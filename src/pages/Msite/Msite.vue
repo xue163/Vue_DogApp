@@ -196,13 +196,13 @@
           <div class="Msite_left">
             <ul>
               <li v-for="(huoLeft,index) in huo.left" :key="index">
-                <img :src="huoLeft" alt=""></li>
+                <img v-lazy="huoLeft" alt=""></li>
             </ul>
           </div>
           <div class="Msite_right">
             <ul>
               <li v-for="(huoRight,index) in huo.right" :key="index">
-                <img :src="huoRight" alt=""></li>
+                <img v-lazy="huoRight" alt=""></li>
             </ul>
           </div>
         </li>
@@ -271,8 +271,7 @@ import {mapState} from "vuex"
             spaceBetween:10//左右间距
           });
           var group = new Swiper('.swiper-three', {
-            slidesPerView:1,//每次展现的个数
-            freeMode:true,//橡皮筋效果
+            loop: true,
           });
 
         })
@@ -602,4 +601,5 @@ import {mapState} from "vuex"
         height 40px
         font-size 12px
         margin-top -10px
+        vertical-align middle
 </style>

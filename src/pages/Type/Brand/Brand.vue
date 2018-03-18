@@ -18,7 +18,7 @@
         </div>
       </li>
     </ul>
-
+    <div class="whole" @click="goto('/whole')">全部</div>
   </div>
 
 </template>
@@ -28,6 +28,12 @@
     computed:{
       ...mapState(['brand']),
     },
+    methods:{
+      goto(path){
+        this.$router.replace(path)
+      }
+    }
+
   }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
@@ -82,4 +88,17 @@
                   line-height 20px
                   font-size 13px
                   color #999
+      .whole
+        position fixed
+        bottom 15%
+        right 5px
+        width 40px
+        height 40px
+        background rgba(#6F6F6F,0.7)
+        border-radius 20px
+        text-align center
+        line-height 40px
+        color #fff
+        font-size 13px
+        font-weight bold
 </style>

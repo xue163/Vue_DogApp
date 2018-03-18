@@ -1,4 +1,4 @@
-import {RECEIVE_FEN,RECEIVE_BRAND,RECEIVE_HOME} from "./mutation-types"
+import {RECEIVE_FEN,RECEIVE_BRAND,RECEIVE_HOME,RECEIVE_WHOLE} from "./mutation-types"
 export default {
   [RECEIVE_FEN](state, {categorys}) {
     state.categorys = categorys
@@ -8,5 +8,8 @@ export default {
   },
   [RECEIVE_HOME](state,{home}){
     state.home = home
+  },
+  [RECEIVE_WHOLE](state,{whole}){
+    state.whole = whole
   }
 }
